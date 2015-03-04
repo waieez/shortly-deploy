@@ -30,6 +30,10 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      build: {
+        src:'public/dist/script.js',
+        dest:'public/dist/script.min.js'
+      }
     },
 
     jshint: {
@@ -103,6 +107,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat',
+    'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
