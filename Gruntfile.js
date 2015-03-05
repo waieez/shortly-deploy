@@ -7,14 +7,15 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: [
-        'public/lib/jquery.js',
-        'public/lib/handlebars.js',
-        'public/lib/underscore.js',
-        'public/lib/backbone.js',
-        'public/client/*.js'
-        ],
-        dest: 'public/dist/script.js'
+        files: {
+          'public/dist/script.js' : ['public/client/*.js'],
+          'public/dist/lib.js': [
+              'public/lib/jquery.js',
+              'public/lib/handlebars.js',
+              'public/lib/underscore.js',
+              'public/lib/backbone.js',
+          ]
+        }
       }
     },
 
@@ -35,8 +36,10 @@ module.exports = function(grunt) {
 
     uglify: {
       build: {
-        src:'public/dist/script.js',
-        dest:'public/dist/script.min.js'
+        files: {
+          'public/dist/script.min.js' : ['public/dist/script.js'],
+          'public/dist/lib.min.js' : ['public/dist/lib.js']
+        }
       }
     },
 
