@@ -12,21 +12,24 @@ var linkSchema = new Schema({
   visits: Number
 });
 
+linkSchema.methods.shortlify = function(done){
+  var shasum = crypto.createHash('sha1');
+  shasum.update(this.get('url'));
+  this.set('code', shasum.digest('hex').slice(0, 5));
+  done();
+}
+
+linkSchema.methods.fetch = function(link, cb) {
+  this.model('Link').findOne(link, function (err, result){
+    cb(err, result);
+  });
+};
+
+//hash link before saving
+linkSchema.pre('save', true, function (next, done){
+  next()
+  this.shortlify(done)
+});
+
 var Link = mongoose.model('Link', linkSchema);
 module.exports = Link;
-
-//REFACTOR
-// var Link = db.Model.extend({
-//   tableName: 'urls',
-//   hasTimestamps: true,
-//   defaults: {
-//     visits: 0
-//   },
-//   initialize: function(){
-//     this.on('creating', function(model, attrs, options){
-//       var shasum = crypto.createHash('sha1');
-//       shasum.update(model.get('url'));
-//       model.set('code', shasum.digest('hex').slice(0, 5));
-//     });
-//   }
-// });

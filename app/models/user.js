@@ -13,7 +13,6 @@ var userSchema = new Schema({
 
 userSchema.methods.fetch = function(user, cb) {
   this.model('User').findOne(user, function (err, user){
-    console.log('found one', err, user);
     cb(err, user);
   });
 };
@@ -25,6 +24,7 @@ userSchema.methods.hashPassword = function(){
       this.set('password', hash);
     });
 }
+
 userSchema.methods.comparePassword = function(attemptedPassword, callback) {
   bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
     callback(isMatch);
