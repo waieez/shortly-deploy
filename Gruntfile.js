@@ -127,7 +127,8 @@ module.exports = function(grunt) {
     'jshint',
     'mochaTest',
     'concat',
-    'uglify'
+    'uglify',
+    'nodemon'
   ]);
 
   // grunt.registerTask('default', [
