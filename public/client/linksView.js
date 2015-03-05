@@ -8,6 +8,7 @@ Shortly.LinksView = Backbone.View.extend({
 
   render: function() {
     this.$el.empty();
+    this.addAll();
     return this;
   },
 
