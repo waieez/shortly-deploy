@@ -16,3 +16,5 @@ Icon
 .floo
 .flooignore
 node_modules
+
+mongodb.js
