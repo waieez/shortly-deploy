@@ -1,0 +1,1 @@
+[ ![Codeship Status for waieez/shortly-deploy](https://codeship.com/projects/c448c870-a78b-0132-707d-2eb3789e9959/status?branch=master)](https://codeship.com/projects/67221)
